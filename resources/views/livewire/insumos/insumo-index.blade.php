@@ -43,7 +43,9 @@
 
                                 <button type="submit" class="btn btn-danger" style="border: none"><i class="fas fa-trash-alt fa-lg"></i></button>
                                 <a href="{{route('insumoEditar', $insumo ->id)}}"><i class="fas fa-user-edit fa-lg" ></i></a>
+                                <!--
                                 <a href="{{route('FormularioEntrada', $insumo ->id)}}"><i class="fas fa-plus-square"></i></a>
+                                -->
                                 @endforeach
 
         <div class="card-footer">
