@@ -18,7 +18,7 @@ class CreateEntradaTable extends Migration
             $table->integer('cantidad');
             $table->string('lote');
             $table->date('caducidad');
-            $table->unsignedInteger('idInsumo')->nullable();
+            $table->unsignedBigInteger('idInsumo')->nullable();
             $table->foreign('idInsumo')->references('id')->on('insumo')->onDelete('cascade');
 
         });

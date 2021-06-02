@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInsumoTable extends Migration
+class CreateCategoriasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateInsumoTable extends Migration
      */
     public function up()
     {
-        Schema::create('insumo', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nombre',200);
-            $table->string('estatus');
-            $table->string('medida',200);
-            $table->integer('stock_minimo');
-
-
+        Schema::create('categorias', function (Blueprint $table) {
+            $table->increments('id');
+            $table->String('nombre');
+            $table->timestamps();
         });
     }
 
@@ -31,6 +27,6 @@ class CreateInsumoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('insumo');
+        Schema::dropIfExists('categorias');
     }
 }
