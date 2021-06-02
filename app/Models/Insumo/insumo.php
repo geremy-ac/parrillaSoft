@@ -11,8 +11,6 @@ class Insumo extends Model
     use HasFactory;
     protected $table ='insumo';
     protected  $guarded = [];
+    protected $fillable = ['nombre','estatus','medida','stock_minimo','cantidad'];
 
-public function entrada(){
-    return $this->belongsTo(Entrada::class,'idInsumo','id');
-}
 }

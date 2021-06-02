@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="card col" style="width: 18rem;">
-                    <img class="card-img-top" src="{{asset('img/insumos.jpg')}}" alt="Card image cap">
+                    <img class="card-img-top " src="{{asset('img/insumos.jpg')}}"  alt="Card image cap ">
                     <div class="card-body">
                         <h5 class="card-title">Insumos</h5>
 

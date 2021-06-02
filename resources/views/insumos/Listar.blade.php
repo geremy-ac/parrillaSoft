@@ -15,7 +15,30 @@
     @endif
     @livewire('insumos.insumo-index')
 
-
+    @if(count($Entradas) > 0)
+           
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="4" class="text-center">Entradas</th>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Caducidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($Entradas as $value)
+                        <tr>
+                            <td>{{$value->nombre_entrada}}</td>
+                            <td>{{$value->cantidad}}</td>
+                            <td>{{$value->caducidad}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+                                @endif
 @stop
 
 @section('css')

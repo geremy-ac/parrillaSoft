@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="57783d0c-2c56-43ea-b8c8-d9db52de396e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/parrillaSoft.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/parrillaSoft.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/insumos/formulario.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InsumoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InsumoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Insumo/Entrada.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Insumo/Entrada.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Insumo/insumo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Insumo/insumo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_04_144113_create_insumo_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_04_144113_create_insumo_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_04_144840_create_entrada_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_04_144840_create_entrada_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_23_173845_create_permission_tables.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/insumos/insumo-index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/insumos/insumo-index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/navigation-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/navigation-menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/delete-user-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/delete-user-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/logout-other-browser-sessions-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/logout-other-browser-sessions-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/two-factor-authentication-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/two-factor-authentication-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/update-password-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/update-password-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/update-profile-information-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/update-profile-information-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/insumos/entrada.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/insumos/entrada.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,6 +150,9 @@
       <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
     </include_path>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="1so5g8P6sQXv61952pFm3jJJw9q" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -186,7 +188,10 @@
       <workItem from="1621623440037" duration="1249000" />
       <workItem from="1621698024943" duration="7412000" />
       <workItem from="1621787275182" duration="4686000" />
-      <workItem from="1621866201815" duration="3010000" />
+      <workItem from="1621866201815" duration="8521000" />
+      <workItem from="1621953963185" duration="21291000" />
+      <workItem from="1622050354525" duration="7907000" />
+      <workItem from="1622138243832" duration="1490000" />
     </task>
     <servers />
   </component>

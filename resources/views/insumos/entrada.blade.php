@@ -24,18 +24,18 @@
         </div>
         <div class="form-group">
             <label for="lote">Lote</label>
-            <input type="text" class="form-control" name="lote" id="lote" placeholder="Ingrese el lote" value="{{old('lote')}}">
-            <small class="text-danger">{{$errors->first('lote')}}</small>
+            <input type="text" class="form-control" name="nombre_entrada" id="lote" placeholder="Ingrese el nombre" value="{{old('nombre_entrada')}}">
+            <small class="text-danger">{{$errors->first('nombre_entrada')}}</small>
         </div>
         <div class="form-group">
             <label for="caducidad">Caducidad</label>
-            <input type="text" class="form-control" name="caducidad" id="caducidad" placeholder="Ingrese la caducidad" value="{{old('caducidad')}}">
+            <input type="date" class="form-control" name="caducidad" id="caducidad" placeholder="Ingrese la caducidad" value="{{old('caducidad')}}">
             <small class="text-danger">{{$errors->first('caducidad')}}</small>
         </div>
 
         <div>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+          
+            <button type="submit" class="btn btn-danger">Guardar</button>
         </div>
     </form>
     <div>
@@ -44,7 +44,7 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Cantidad</th>
-            <th scope="col">Lote</th>
+            <th scope="col">nombre_entrada</th>
             <th scope="col">Caducidad</th>
         </tr>
         </thead>
@@ -53,16 +53,8 @@
             <tr>
                 <td>{{$entrada->id}}</td>
                 <td>{{$entrada->cantidad}}</td>
-                <td>{{$entrada->lote}}</td>
-                <td>{{$entrada->caducidad}}</td>
-                <td>
-                    <form action="{{route('entradaEliminar', $entrada->id)}}" method="post" class="formulario-eliminar">
-                        @csrf @method('DELETE')
-
-                        <button type="submit" class="btn btn-danger" style="border: none"><i class="fas fa-trash-alt fa-lg"></i></button>
-                    <a href="{{route('entradaEditar', $entrada ->id)}}"><i class="fas fa-user-edit fa-lg" ></i></a>
-                        </form>
-                </td>
+                <td>{{$entrada->nombre_entrada}}</td>
+                <td>{{$entrada->caducidad}}</td>              
             </tr>
             @endforeach
             </tbody>
@@ -79,8 +71,8 @@
 @stop
 
 @section('js')
-    <script>   <script>
-    
+    <script>
+
     $('.formulario-eliminar').submit(function(e){
       e.preventDefault();
       Swal.fire({
@@ -100,9 +92,9 @@
     )*/
     this.submit();
   }
-}) 
+})
     })
-    
 
-     </script> </script>
+
+   </script>
 @stop

@@ -32,9 +32,18 @@ Route::resource('users', UserController::class)->only(['index','edit','update'])
 
 
 Route::get('insumos/Listar',[InsumoController::class,'Listar'])->name('listarInsumo');
+Route::post('insumos/create',[InsumoController::class,'save'])->name('CrearInsumo');
+Route::get('insumos/insumoCrear',[InsumoController::class,'FormularioInsumo'])->name('insumoCrear');
+
+Route::put('insumos/agregarEntradas',[InsumoController::class,'edit'])->name('insumoActualizar');
 Route::get('insumos/entrada/{id}',[InsumoController::class,'FormularioEntrada'])->name('FormularioEntrada');
 Route::get('insumos/crear',[InsumoController::class,'FormularioCrear'])->name('FormularioInsumo');
-Route::post('insumos/create',[InsumoController::class,'create'])->name('CrearInsumo');
+Route::get('insumos/agregarEntradas/{id}', [InsumoController::class, 'formularioEditar'])->name('insumoEditar');
+
+Route::get('insumos/entrada/{id}',[InsumoController::class,'FormularioEntrada'])->name('FormularioEntrada');
+Route::post('insumos/crearEntrada',[InsumoController::class,'crearEntrada'])->name('CrearEntrada');
+
+
 Route::post('insumos/crearEntrada',[InsumoController::class,'crearEntrada'])->name('CrearEntrada');
 Route::delete('insumos/{insumo}',[InsumoController::class, 'eliminar'])->name('insumoEliminar');
 Route::get('insumos/formularioEditar/{id}', [InsumoController::class, 'FormularioEditarEntrada'])->name('entradaEditar');

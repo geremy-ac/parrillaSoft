@@ -10,10 +10,9 @@ class Entrada extends Model
     public $timestamps = false;
     use HasFactory;
     protected $table ='entrada';
-    protected $fillable = ['cantidad','lote','caducidad','idInsumo'];
-
+    protected $fillable = ['cantidad','lote','caducidad','idInsumo','idEntrada','nombre_entrada'];
     public function insumos(){
         return $this->hasMany(Insumo::class );
     }
-
+    protected $primaryKey = 'idEntrada';
 }

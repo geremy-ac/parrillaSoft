@@ -279,7 +279,7 @@ return [
                 ],
                 [
                     'text' => 'Crear',
-                    'route'   => 'FormularioInsumo',
+                    'route'   => 'insumoCrear',
                     'icon' => 'fas fa-plus',
               
 

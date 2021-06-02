@@ -17,13 +17,10 @@ class InsumoIndex extends Component
         $this->resetPage();
     }
     public function render()
-
     {
         $entradas = Entrada::all();
         $insumos = insumo::where('nombre','LIKE','%'.$this->search.'%')
             ->paginate();//default: 15
-
-
         return view('livewire.insumos.insumo-index', compact('insumos','entradas'));
     }
 }

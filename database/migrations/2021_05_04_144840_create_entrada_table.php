@@ -14,13 +14,12 @@ class CreateEntradaTable extends Migration
     public function up()
     {
         Schema::create('entrada', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->integer('cantidad');
-            $table->string('lote');
+            $table->string('nombre_entrada');
             $table->date('caducidad');
             $table->unsignedInteger('idInsumo')->nullable();
             $table->foreign('idInsumo')->references('id')->on('insumo')->onDelete('cascade');
-
         });
     }
 

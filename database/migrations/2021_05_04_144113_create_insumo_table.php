@@ -19,8 +19,7 @@ class CreateInsumoTable extends Migration
             $table->string('estatus');
             $table->string('medida',200);
             $table->integer('stock_minimo');
-
-
+            $table->integer('cantidad');
         });
     }
 
