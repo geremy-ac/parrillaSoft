@@ -223,46 +223,49 @@ return [
     */
 
     'menu' => [
-       
+
         [
             'text'        => 'usuarios',
             'url'         => '',
             'icon'        => 'fas fa-users',
             'label_color' => 'success',
-           
+
             'submenu' => [
                 [
                     'text' => 'Listar',
                     'route'       => 'users.index',
                     'icon' => 'fas fa-id-badge',
-                  
+
                 ],
 
             ],
 
         ],
-          
-        ['header' => 'productos'],
+
         [
-            'text'       => 'pollos',
+            'text'       => 'Productos',
             'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'carnes y chuzos',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'salchipapas',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'picadas',
-            'icon_color' => 'rose',
-            'url'        => '#',
-        ],
+
+
+                'submenu'=>[
+                 [
+                     'text' => 'Crear',
+                     'url'        => 'producto/crear',
+                     'icon' => 'fas fa-plus',
+
+
+                 ],
+
+                 [
+                    'text'       => 'Listar',
+                    'route' => 'ListarProducto',
+                    'icon_color' => 'yellow',
+
+                ],
+
+                ],
+            ],
+
         [
             'text'        => ' Control de insumos',
             'url'         => '',
@@ -281,14 +284,53 @@ return [
                     'text' => 'Crear',
                     'route'   => 'insumoCrear',
                     'icon' => 'fas fa-plus',
-              
+
+
+                ],
+
+        
+            ],
+        ],
+        [
+            'text'       => 'Ventas',
+            'icon_color' => 'red',
+
+
+            'submenu'=>[
+                [
+                    'text' => 'Vender',
+                    'url'        => 'ventas/vender',
+                    'icon' => 'fas fa-plus',
+                ],
+                [
+                    'text'       => 'Listar Ventas',
+                    'route' => 'VistaListarV',
+                    'icon_color' => 'yellow',
 
                 ],
 
             ],
+        ],
+       [
+        'text'       => 'Reportes',
+        'icon_color' => 'red',
 
+
+        'submenu'=>[
+            [
+                'text' => 'Grafica Productos',
+                'url'        => 'Reportes',
+                'icon' => 'fas fa-plus',
+
+
+            ],
+
+            ],
         ],
     ],
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Menu Filters

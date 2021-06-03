@@ -146,6 +146,7 @@ class InsumoController extends Controller
         $entrada->update($campos);
         return redirect('insumos/Listar')->with('mensaje', 'entrada actualizado');
     }
+    
     /**
      * Remove the specified resource from storage.
      *

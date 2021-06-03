@@ -2,6 +2,7 @@
 
 namespace App\Models\Insumo;
 
+use App\Models\producto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,4 +14,12 @@ class Insumo extends Model
     protected  $guarded = [];
     protected $fillable = ['nombre','estatus','medida','stock_minimo','cantidad'];
 
+public function entrada(){
+    return $this->belongsTo(Entrada::class,'idInsumo','id');
+}
+
+    public function productos()
+    {
+        return $this->belongsToMany(producto::class);
+    }
 }
