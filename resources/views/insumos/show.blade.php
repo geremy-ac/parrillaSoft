@@ -1,10 +1,17 @@
-<div>
-
-    <div class="card">
-        <div class="card-header">
-            <input wire:model="search" ire:model="search" class="form-control" placeholder="ingrese nombre del insumo">
-        </div>
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <title>pdf</title>
+</head>
+<body>
+    
+<div class="card">
+       
+        <a href="{{route('descargarPDFInsumos')}}">Descargar PDF</a>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -35,24 +42,21 @@
                         @endif
 
                     </td>
-                        <td>
-                            <form action="{{route('insumoEliminar', $insumo->id)}}" method="post" class="formulario-eliminar">
-                                @csrf @method('DELETE')
-
-                                <button type="submit" class="btn btn-danger" style="border: none"><i class="fas fa-trash-alt fa-lg"></i></button>                   
-                                <a class="btn btn-primary"  href="{{route('FormularioEntrada', $insumo ->id)}}"><i class="fas fa-plus-square"></i></a>                            
-                                <a class="btn btn-info" href="/insumos/Listar?id={{$insumo->id}}">Ver</a>
-                               
+                      
+                       
                                 @endforeach
-
         <div class="card-footer">
 
 
 
-            {{$insumos -> links()}}
+          
         </div>
 
     </div>
 
 
 </div>
+
+</body>
+</html>
+<div>

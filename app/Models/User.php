@@ -66,7 +66,7 @@ class User extends Authenticatable
         }
     public function adminlte_desc(){
         //todo: recuperar el role del usuario desde BD
-        return 'parcero';
+        return 'admin';
     }
     public function adminlte_profile_url(){
         //todo: retornar la ruta del perfil de usuario

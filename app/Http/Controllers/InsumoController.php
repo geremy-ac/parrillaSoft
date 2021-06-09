@@ -7,31 +7,30 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Insumo\Entrada;
 use App\Models\Insumo\Insumo;
+use PDF;
 
 class InsumoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:listarInsumo')->only('Listar');
+        $this->middleware('can:FormularioEntrada')->only('FormularioEntrada');
+        $this->middleware('can:insumoCrear')->only('FormularioInsumo');
+        $this->middleware('can:CrearInsumo')->only('save');
+        $this->middleware('can:CrearEntrada')->only('crearEntrada');
+        $this->middleware('can:insumoEliminar')->only('eliminar');
+    }
 
     public function FormularioInsumo(){
         $entradas = Entrada::all();
         return view('insumos/formulario' ,compact('entradas'));
     }
-
-    public function FormularioCrear(){
-
-        $entradas = Entrada::all();
-        return view('insumos/crear', compact('entradas'));
-    }
-    public function FormularioEditar($id){
+    public function FormularioEntrada($id){
         $insumo = Insumo::find($id);
         $entradas = Entrada::where('idInsumo',$id)->get();
-        return view('insumos/agregarEntradas',compact('insumo','entradas'));
+        $total = Entrada::where('idInsumo',$id)->sum('cantidad');
+        return view('insumos/entrada',compact('insumo','entradas','total'));
     }
-    public function FormularioEditarEntrada($id){
-        $insumos = Insumo::all();
-        $entrada = Entrada::find($id);
-        return view('insumos/editarEntrada',compact('entrada','insumos'));
-    }
-
     public function Listar(Request $request){
         $id = $request->input("id");
         $Entradas = []; 
@@ -40,6 +39,16 @@ class InsumoController extends Controller
         }
         return view('insumos/Listar', compact('Entradas'));
     }
+     
+    public function PDFinsumos()
+    {
+       
+        $insumos = insumo::all();
+        $pdf = PDF::loadView('insumos/show', compact('insumos'));
+        return $pdf->download('insumos.pdf');
+
+    } 
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -47,21 +56,9 @@ class InsumoController extends Controller
      */
     public function create()
     {
-        $campos=request()->validate([
-            'nombre'=>'required|min:3',
-            'estatus' =>'required',
-            'medida' => 'required',
-            'stock_minimo'=>'required',
-        ]);
-
-        Insumo::create($campos);
-        return redirect('insumos/Listar')->with('mensaje','Insumo guardado');
-    }
    
-    public  function  findIdEntrada($id){
-        $idEntrada = Entrada::find($id);
-        return view('insumos/crear',compact('idEntrada'));
-}
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -72,7 +69,6 @@ class InsumoController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -81,43 +77,19 @@ class InsumoController extends Controller
      */
     public function show()
     {
-        
+        $insumos = insumo::all();
+        return view('insumos/show', compact('insumos'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request ,Insumo $insumo)
+    public function edit(Request $request )
     {
-        $input = $request->all();      
-        try {
-            DB::beginTransaction();
-            $campos=request()->validate([
-                'nombre'=>'required|min:3',
-                'estatus' =>'required',
-                'medida' => 'required',
-                'stock_minimo'=>'required',
-                'cantidad' => 'required',
-            ]);
-            $insumo->update($campos);
-            foreach($input["nombre_entradas"] as $key => $value){
-                Entrada::create([
-                    "idInsumo"=>$insumo->id,
-                    "cantidad"=>$input["cantidades"][$key],
-                    "nombre_entrada"=>$input["nombre_entradas"][$key],
-                    "caducidad"=>$input["caducidades"][$key],
-                ]);}
-            DB::commit();
-            return redirect("insumos/Listar")->with('mensaje','cambios realizados ');
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return redirect("insumos/agregarEntradas")->with('mensaje', $e->getMessage());
-        }
+      
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -135,18 +107,6 @@ class InsumoController extends Controller
         $insumo->update($campos);
         return redirect('insumos/Listar')->with('mensaje', 'insumo actualizado');
     }  
-    public function actualizarEntrada(Entrada $entrada)
-    {
-        $campos=request()->validate([
-            'cantidad'=>'required',
-            'lote' =>'required',
-            'caducidad' => 'required',
-            'idInsumo' => 'required',
-        ]);
-        $entrada->update($campos);
-        return redirect('insumos/Listar')->with('mensaje', 'entrada actualizado');
-    }
-    
     /**
      * Remove the specified resource from storage.
      *
@@ -170,19 +130,11 @@ class InsumoController extends Controller
         }
         return $cantidad;
     }
-
-    public function FormularioEntrada($id){
-        $insumo = Insumo::find($id);
-        $entradas = Entrada::where('idInsumo',$id)->get();
-        $total = Entrada::where('idInsumo',$id)->sum('cantidad');
-        return view('insumos/entrada',compact('insumo','entradas','total'));
-    }
-
     public function crearEntrada(Request $request)
     {
         $input = $request->all();
         $idInsumo = $input["idInsumo"];
-        $total = Entrada::where('idInsumo',$idInsumo)->sum('cantidad');    
+          
         $caja=request()->validate([
             'nombre_entrada'=>'required',
             'cantidad' =>'required',
@@ -190,10 +142,10 @@ class InsumoController extends Controller
             'idInsumo' => 'required',
         ]);
         Entrada::create($caja);
+        $total = Entrada::where('idInsumo',$idInsumo)->sum('cantidad');  
         $totalInsumo = Insumo::find($idInsumo)->update(["cantidad"=>$total]);
         return redirect('insumos/Listar',)->with('mensaje','entrada guardado');
     }
-
     public function save(Request $request)
     {
         $input = $request->all();
