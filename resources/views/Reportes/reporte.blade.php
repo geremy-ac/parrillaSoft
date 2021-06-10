@@ -4,34 +4,64 @@
 
 
 
-    <div class="row col-5">
-                <canvas id="myChart" width="400" height="400"></canvas>
+    <div id="chart-container">
     </div>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"></script>
-                <script>
-                    var productos=[];
-                    var valores=[];
-                var ctx = document.getElementById('myChart');
-                var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                labels: productos,
-                datasets:[
-                { label:'Ventas al año',
-                    data:valores,
-                    backgroundColor: ['#F54E2A', '#36110A', '#A62007'],
-                borderColor: ['#FF2800'],
-                borderWidth: 3}]
-                },
-                options: {
-                scales: {
-                y: {
-                beginAtZero: true
-                }
-                }
-                }
-                });
-                </script>
 
+@endsection
+@section("js")
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script>
+        var datas = <?php echo json_encode ($datas)?>;
+        Highcharts.chart('chart-container',{
+            tittle: {
+                text: 'Incremento de ventas, 2021'
+
+            },
+            subtitle:{
+                text:'Fuente:  Ventas'
+            },
+            xAxis:{
+                categories:['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
+            },
+            xAxis:{
+                title:{
+                    text:'Numero de nuevas ventas'
+
+                }
+            },
+            legend:{
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+            ploOptions:{
+                series:{
+                    alowwPointSelect: true
+
+                }
+            },
+            series:[{
+                name:'Ventas',
+                data: datas
+            }],
+            responsive:{
+                rules:{
+                    condition:{
+                        maxWidth:500
+                    },
+                    charOptions:{
+                        legend:{
+                            layout: 'horizontal',
+                            align:'center',
+                            verticalAlign:'bottom'
+                        }
+                    }
+                }
+            }
+
+        })
+
+    </script>
 @endsection
 

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\producto;
 use App\Models\ProductosVenta;
+
 use App\Models\Venta;
+use App\Models\Insumo\insumo;
+use App\Models\ProductoInsumo;
 use Illuminate\Http\Request;
 use DB;
 class VentaController extends Controller
@@ -31,20 +34,39 @@ class VentaController extends Controller
     }
     public function crear(Request $request)
     {
+
         $input = $request -> all();
         try {
             DB::beginTransaction();
+
             $venta = Venta::create([
 
                 "total" => $this->calcular_precio($input["Producto_id"],$input["cantidades"]),
 
             ]);
             foreach ($input["Producto_id"] as $key => $value){
+
                 ProductosVenta::create([
                     "Producto_id" => $value,
                     "Venta_id"=> $venta->id,
                     "cantidad" =>  $input["cantidades"][$key]
                 ]);
+
+                $insumos =ProductoInsumo::where("Producto_id",$value)
+                    ->get();
+                foreach($insumos as $i =>$item){
+                    $insumo = insumo::find($item->Insumo_id);
+
+                    if($insumo->cantidad <= ($item->cantidad * $input["cantidades"][$key])){
+                        DB::rollBack();
+                        return redirect("ventas/vender")->with('status','3');
+                    }else{
+                        $insumo->update(["cantidad" => $insumo->cantidad - $item->cantidad * $input["cantidades"][$key]]);
+                    }
+
+                }
+
+
 
             }
 
@@ -52,9 +74,10 @@ class VentaController extends Controller
             return redirect("ventas/vender")->with('status','1');
         }catch (\Exception $e){
             DB::rollBack();
-            return redirect("ventas/vender")->with('status',$e->getMessage());
+            return redirect("ventas/vender")->with('status','2');}
         }
-    }
+
+
     public function calcular_precio($productos, $cantidades)
     {
         $precio = 0;

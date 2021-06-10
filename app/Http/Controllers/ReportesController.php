@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Venta;
 use Illuminate\Http\Request;
+use App\Models\Insumo\Insumo;
 use DB;
 
 class ReportesController extends Controller
@@ -22,6 +23,13 @@ class ReportesController extends Controller
             $datas[$month] = $ventas[$index];
         }
         return view('Reportes.reporte',compact('datas'));
+    }
+    public function Listar(){
+
+        $insumos = insumo::select("insumo.cantidad")
+            ->where('cantidad','=<','stock_minimo')
+            ->get();
+        return view('Reportes.stocksm', compact('insumos'));
     }
 
 }

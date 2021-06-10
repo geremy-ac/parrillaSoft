@@ -288,7 +288,7 @@ return [
 
                 ],
 
-        
+
             ],
         ],
         [
@@ -320,6 +320,13 @@ return [
             [
                 'text' => 'Grafica Productos',
                 'url'        => 'Reportes',
+                'icon' => 'fas fa-plus',
+
+
+            ],
+            [
+                'text' => 'Productos en alerta',
+                'url'        => 'Reportes/Stock',
                 'icon' => 'fas fa-plus',
 
 

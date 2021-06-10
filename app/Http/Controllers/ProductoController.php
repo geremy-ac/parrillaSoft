@@ -113,6 +113,17 @@ class ProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function Traer_insumos($id)
+    {
+            $insumos =insumo::select("insumo.*","insumo_productos.cantidad")
+                ->join("insumo_productos", "insumo.id","=","insumo_productos.Insumo_id")
+                ->where("insumo_productos.Producto_id",$id)
+                ->get();
+            return  $insumos;
+        }
+
+
+
     public function store(Request $request)
     {
         //

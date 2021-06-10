@@ -65,8 +65,10 @@ Route::get('producto/relacionar/{id}',[ProductoController::class,'insumoagregado
 Route::post('producto/unir',[ProductoController::class,'unir'])->name('UnirInsumo');
 
 Route::get('ventas/Listar',[VentaController::class,'show'])->name('VistaListarV');
+Route::get('ventas/validar/{id}',[VentaController::class,'validar'])->name('Validar');
 Route::get('ventas/vender',[VentaController::class,'create'])->name('VistaCrearV');
 Route::post('ventas/vendido',[VentaController::class,'crear'])->name('CrearProducto');
-
+Route::get('ventas/insumo/{id}',[ProductoController::class,'Traer_insumos'])->name('Tinsumos');
 
 Route::get('Reportes',[ReportesController::class,'index'])->name('GraficaProductos');
+Route::get('Reportes/Stock',[ReportesController::class,'Listar'])->name('ListarStock');

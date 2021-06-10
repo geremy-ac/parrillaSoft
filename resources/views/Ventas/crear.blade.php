@@ -11,13 +11,23 @@
                     <div class="alert alert-success">
                         Se guardo
                     </div>
-                @else
-
+                @elseif(session('status')=='2')
                     <div class="alert alert-danger">
-                        {{session('status')}}
+
+                        Recuerde agregar por lo menos un  producto a la venta
+
+                    </div>
+                @elseif(session('status')=='3')
+                    <div class="alert alert-danger">
+
+                       Insumos insuficientes
+
                     </div>
                 @endif
             @endif
+
+
+
         </div>
     </div>
 
@@ -120,8 +130,11 @@
 
     <script>
         function colocar_precio() {
+
             let precio = $("#productos option:selected").attr("precio");
             $("#precio").val(precio);
+
+
         }
         function agregar_producto(){
             let Producto_id = $("#productos option:selected").val();
@@ -169,5 +182,6 @@
             let total = $("#total").val() || 0;
             $("#total").val(parseInt(total) - subtotal);
         }
+
     </script>
 @stop
