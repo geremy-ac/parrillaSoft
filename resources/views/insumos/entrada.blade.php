@@ -3,13 +3,15 @@
 @section('title', 'Index')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1>entradas</h1>
 @stop
 
 @section('content')
 
     <form action="{{route('CrearEntrada')}}" method="post">
         <input type="hidden" name="idInsumo" value="{{$insumo->id}}">
+        <label for="insumo">insumo</label>
+        <input type="text" class="form-control" name="idInsumo" value="{{$insumo->nombre}}" readonly>
         @method("POST")
         @csrf
         @if($errors->any())
@@ -94,7 +96,5 @@
   }
 })
     })
-
-
    </script>
 @stop

@@ -27,6 +27,7 @@
                     <td>{{$productov->descripcion}}</td>
                     <td>{{$productov->precio}}</td>
                     <td id="resp{{ $productov->status }}">
+                        
                         <br>
                         @if($productov->status == 1)
                             <button type="button" class="btn btn-sm btn-success">Activo</button>

@@ -125,7 +125,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-danger elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -229,43 +229,20 @@ return [
             'url'         => '',
             'icon'        => 'fas fa-users',
             'label_color' => 'success',
+            'can' => 'users.index',
 
             'submenu' => [
                 [
                     'text' => 'Listar',
                     'route'       => 'users.index',
                     'icon' => 'fas fa-id-badge',
+                    'can' => 'users.index',
 
                 ],
 
             ],
 
         ],
-
-        [
-            'text'       => 'Productos',
-            'icon_color' => 'red',
-
-
-                'submenu'=>[
-                 [
-                     'text' => 'Crear',
-                     'url'        => 'producto/crear',
-                     'icon' => 'fas fa-plus',
-
-
-                 ],
-
-                 [
-                    'text'       => 'Listar',
-                    'route' => 'ListarProducto',
-                    'icon_color' => 'yellow',
-
-                ],
-
-                ],
-            ],
-
         [
             'text'        => ' Control de insumos',
             'url'         => '',
@@ -278,34 +255,63 @@ return [
                     'url'  => 'insumos/Listar',
                     'route'       => 'insumos.Listar',
                     'icon' => 'fas fa-utensils',
+                    'can' => 'listarInsumo',
 
                 ],
                 [
                     'text' => 'Crear',
                     'route'   => 'insumoCrear',
                     'icon' => 'fas fa-plus',
-
-
+                    'can' => 'insumoCrear',
                 ],
 
 
             ],
         ],
+
+        [
+            'text'       => 'Productos',
+            'icon' => 'fas fa-drumstick-bite',
+
+
+                'submenu'=>[
+                 [
+                     'text' => 'Crear',
+                     'url'        => 'producto/crear',
+                     'icon' => 'fas fa-plus-circle',
+                     'can' => 'VistaCrearP',
+
+
+                 ],
+
+                 [
+                    'text'       => 'Listar',
+                    'route' => 'ListarProducto',
+                    'icon' => 'fas fa-list',
+                    'can' => 'ListarProducto',
+
+                ],
+
+                ],
+            ],
+
+       
         [
             'text'       => 'Ventas',
-            'icon_color' => 'red',
-
+            'icon' => 'fas fa-store',
 
             'submenu'=>[
                 [
                     'text' => 'Vender',
                     'url'        => 'ventas/vender',
-                    'icon' => 'fas fa-plus',
+                    'icon' => 'fas fa-cash-register',
+                    'can' => 'VistaListarV',
                 ],
                 [
                     'text'       => 'Listar Ventas',
                     'route' => 'VistaListarV',
-                    'icon_color' => 'yellow',
+                    'icon' => 'fas fa-shopping-basket',
+                    'can' => 'VistaCrearV',
 
                 ],
 
@@ -313,16 +319,14 @@ return [
         ],
        [
         'text'       => 'Reportes',
-        'icon_color' => 'red',
+        'icon' => 'fas fa-bug',
 
 
         'submenu'=>[
             [
                 'text' => 'Grafica Productos',
                 'url'        => 'Reportes',
-                'icon' => 'fas fa-plus',
-
-
+                'icon' => 'fas fa-flag',
             ],
             [
                 'text' => 'Productos en alerta',

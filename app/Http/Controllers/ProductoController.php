@@ -13,7 +13,14 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:ListarProducto')->only('Listar');
+        $this->middleware('can:VistaCrearP')->only('create');
+        $this->middleware('can:Cestado')->only('cambiarestado');
+        $this->middleware('can:CrearProducto')->only('Crear');
 
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,8 +49,6 @@ class ProductoController extends Controller
                 ->where("insumo_productos.Producto_id",$id)
              ->get();
         }
-
-
         $producto = producto::select("productos.*","categorias.nombre as categorias")
         ->join("categorias","categorias.id","=","productos.IdCategorias")
         ->OrderBy("id",'desc')
@@ -59,7 +64,6 @@ class ProductoController extends Controller
      */
     public function create()
     {
-
         $categorias = categoria::all();
         $insumos = insumo::all();
         return view('Productos/crear', compact('categorias','insumos'));

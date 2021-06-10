@@ -20,7 +20,7 @@
                 @elseif(session('status')=='3')
                     <div class="alert alert-danger">
 
-                       Insumos insuficientes
+                       Insumos insuficientes para la venta
 
                     </div>
                 @endif
@@ -77,7 +77,9 @@
                                 <select id="productos" name="productos" class="form-control" onchange="colocar_precio()">
                                     <option value="">Seleccione</option>
                                     @foreach ($productos as $value)
+                                    @if($value->status == 1)
                                         <option  precio="{{$value->precio}}"value="{{$value->id}}">{{$value->Nombre}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>

@@ -30,7 +30,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Productos</h5>
 
-                        <a href="#" class="btn btn-danger">Ir al sitio</a>
+                        <a href="{{route('ListarProducto')}}" class="btn btn-danger">Ir al sitio</a>
                     </div>
                 </div>
                 <div class="card col" style="width: 18rem;">
@@ -38,7 +38,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Ventas</h5>
 
-                        <a href="#" class="btn btn-danger">Ir al sitio</a>
+                        <a href="{{route('VistaListarV')}}" class="btn btn-danger">Ir al sitio</a>
                     </div>
                 </div>
                    </div>

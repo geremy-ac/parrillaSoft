@@ -129,7 +129,6 @@
             $("select").select2();
         });
        
-       
 function agregar_entrada(){
     let nombre_entrada = $("#nombre_entrada").val();
     let cantidad = $("#cantidad").val();
