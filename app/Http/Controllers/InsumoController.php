@@ -42,11 +42,9 @@ class InsumoController extends Controller
      
     public function PDFinsumos()
     {
-       
         $insumos = insumo::all();
         $pdf = PDF::loadView('insumos/show', compact('insumos'));
         return $pdf->download('insumos.pdf');
-
     } 
     
     /**
@@ -57,6 +55,15 @@ class InsumoController extends Controller
     public function create()
     {
    
+    }
+
+    public function cambiarEstado($id, $estatus){
+        $insumos = insumo::find($id);
+        if($insumos == null){
+            return redirect()->route('listarInsumo');
+        }
+        $insumos->update(["estatus"=> $estatus]);
+        return redirect('insumos/Listar');
     }
 
     /**

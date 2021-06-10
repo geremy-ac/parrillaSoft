@@ -25,6 +25,7 @@
                         <td>{{ $value->total }}</td>
 
                         <td>
+                        <a class="btn btn-primary"  href="{{route('facturaVenta', $value ->id)}}"><i class="fas fa-plus-square"></i></a> 
                             <a class="btn btn-info" href="/ventas/Listar?id={{ $value->id }}">Ver Detalle</a>
                         </td>
                     </tr>

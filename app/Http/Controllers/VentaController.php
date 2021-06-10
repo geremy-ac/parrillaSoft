@@ -7,6 +7,7 @@ use App\Models\ProductosVenta;
 use App\Models\Venta;
 use Illuminate\Http\Request;
 use DB;
+use PDF;
 class VentaController extends Controller
 {
     /**
@@ -18,6 +19,24 @@ class VentaController extends Controller
     {
         //
     }
+public function factura($id){
+    $productos = producto::select("productos.*", "productos_venta.cantidad")
+    ->join("productos_venta", "productos.id", "=", "productos_venta.Producto_id")
+    ->where("productos_venta.Venta_id",$id)
+    ->get();
+     $ventas = Venta::find($id);
+      return view("Ventas.factura", compact("ventas", "productos"));
+}
+public function PDFventas($id)
+{
+    $productos = producto::select("productos.*", "productos_venta.cantidad")
+    ->join("productos_venta", "productos.id", "=", "productos_venta.Producto_id")
+    ->where("productos_venta.Venta_id",$id)
+    ->get();
+    $ventas = Venta::find($id);
+    $pdf = PDF::loadView('Ventas/factura', compact('productos','ventas'));
+    return $pdf->download('ventas.pdf');
+} 
 
     /**
      * Show the form for creating a new resource.
@@ -134,4 +153,5 @@ class VentaController extends Controller
     {
         //
     }
+
 }

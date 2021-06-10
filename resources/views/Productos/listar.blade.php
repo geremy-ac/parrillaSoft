@@ -33,11 +33,8 @@
                         </td>
                         <td>
                             <a class="btn btn-info" href="/producto/Listar?id={{$value->id}}">Ver insumos</a>
-
                         </td>
-
                     </tr>
-
                 @endforeach
                 </tbody>
             </table>

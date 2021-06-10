@@ -67,7 +67,9 @@
                                 <select id="productos" name="productos" class="form-control" onchange="colocar_precio()">
                                     <option value="">Seleccione</option>
                                     @foreach ($productos as $value)
+                                    @if($value->status == 1)
                                         <option  precio="{{$value->precio}}"value="{{$value->id}}">{{$value->Nombre}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
